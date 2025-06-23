@@ -1,54 +1,52 @@
-import styles from "./page.module.css";
+// app/devices/[device_number]/[x_Auth]/page.jsx
+import styles from './page.module.css';
 
-async function getDataFromSpring(device_number, X_Auth) {
-  const apiUrl = process.env.API_URL
+export const dynamic = 'force-dynamic';
 
-  try {
-    const response = await fetch(apiUrl, {
-      method: 'GET',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        deviceNumber: device_number,
-        xAuth: X_Auth,
-      }),
-      cache: 'no-store',
-    });
-    if (!response.ok) {
-      throw new Error(`API call failed`);
-    }
-    return response.json();
-  } catch (e) {
-    console.error("Failed to fetch data from Spring Boot:");
-    throw new Error('API와 통신하는 데 실패했습니다.');
+const BASE_URL = process.env.BASE_API_URL || 'http://localhost:8080';
+
+async function getDataFromSpring(deviceNumber, XAuth) {
+  const url = `${BASE_URL}/api/v1/devices/${deviceNumber}/safe-number`;
+  const res = await fetch(url, {
+    method: 'GET',
+    headers: {
+      'X-Auth': XAuth,
+    },
+  });
+
+  if (!res.ok) {
+    throw new Error(`API 호출 실패: ${res.status}`);
   }
+  return res.json();  // { deviceNumber: "...", XAuth: "..." }
 }
 
-export default async function UserCardPage({ params }) {
-  const { device_number, X_Auth } = params;
-  // let apiData = null;
-  // let error = null;
+export default async function UserCardPage({ params: { device_number, X_Auth } }) {
+  let apiData = null;
+  let error = null;
 
-  // try {
-  //   apiData = await getDataFromSpring(device_number, X_Auth);
-  // } catch (e) {
-  //   error = e.message;
-  // }
+  try {
+    apiData = await getDataFromSpring(device_number, X_Auth);
+  } catch (e) {
+    console.error(e);
+    error = e.message;
+  }
 
   return (
     <div className={styles.page}>
       <h1>User Card Information</h1>
-      <p>Device Number: {device_number}</p>
-      <p>X Auth Value: {X_Auth}</p>
-      {/* <hr />
-      <h2>Data from Spring Boot API</h2>
-      {error ? (
+      <p><strong>Device Number:</strong> {device_number}</p>
+      <p><strong>X-Auth Value:</strong> {X_Auth}</p>
+
+      {apiData && (
+        <>
+          <p><strong>Echo deviceNumber:</strong> {apiData.deviceNumber}</p>
+          <p><strong>Echo XAuth:</strong> {apiData.XAuth}</p>
+        </>
+      )}
+
+      {error && (
         <p style={{ color: 'red' }}>Error: {error}</p>
-      ) : (
-        <pre>{JSON.stringify(apiData, null, 2)}</pre>
-      )} */}
+      )}
     </div>
   );
 }
-
