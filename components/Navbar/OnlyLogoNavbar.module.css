@@ -1,0 +1,13 @@
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    padding: 20px;
+}
+
+.link {
+    color: white;
+    margin-right: 16px;
+    text-decoration: none;
+}

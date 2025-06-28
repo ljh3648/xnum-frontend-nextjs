@@ -1,5 +1,8 @@
-// app/devices/[device_number]/[x_Auth]/page.jsx
-import styles from './page.module.css';
+import Link from "next/link";
+
+import Navbar from "@/components/Navbar/OnlyLogoNavbar";
+import Card from "@/components/Card/Card"
+import UserCard from "@/components/UserCard/UserCard"
 
 export const dynamic = 'force-dynamic';
 
@@ -32,8 +35,13 @@ export default async function UserCardPage({ params: { device_number, X_Auth } }
   }
 
   return (
-    <div className={styles.page}>
-      <h1>User Card Information</h1>
+    <div>
+      <Navbar />
+      {/* <Card /> */}
+      <div style={{ display: "flex", justifyContent: "center", marginTop: 10 }}>
+        <UserCard />
+      </div>
+      {/* <h1>User Card Information</h1>
       <p><strong>Device Number:</strong> {device_number}</p>
       <p><strong>X-Auth Value:</strong> {X_Auth}</p>
 
@@ -46,7 +54,7 @@ export default async function UserCardPage({ params: { device_number, X_Auth } }
 
       {error && (
         <p style={{ color: 'red' }}>Error: {error}</p>
-      )}
+      )} */}
     </div>
   );
 }
