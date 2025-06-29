@@ -1,7 +1,7 @@
 .container {
     height: 540px;
     width: 400px;
-    background-color: green;
+    /* background-color: green; */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -104,9 +104,17 @@
     z-index: 2;
 }
 
-.card-on img {
-    margin-top: 30px;
+.card-logo-img {
+    margin-top: 20px;
+    /* background-color: red; */
     height: 200px;
+    width: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-logo-img img {
     width: 200px;
 }
 
