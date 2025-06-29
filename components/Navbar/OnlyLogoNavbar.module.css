@@ -1,13 +1,24 @@
 .navbar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: black;
-    padding: 20px;
+  height: 56px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
 }
 
-.link {
-    color: white;
-    margin-right: 16px;
-    text-decoration: none;
+.logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  content: url("/logo/logo_black.ico");
+}
+
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background: #0a0a0a;
+  }
+
+  .logo {
+    content: url("/logo/logo_white.ico");
+  }
 }

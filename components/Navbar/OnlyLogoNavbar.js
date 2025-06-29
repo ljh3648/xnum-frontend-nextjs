@@ -5,11 +5,7 @@ export default function Navbar() {
     return (
         <nav className={styles.navbar}>
             <Link href="/">
-                <img
-                    src="/logo/favicon.ico"
-                    width={32}
-                    height={32}
-                />
+                <img className={styles.logo}/>
             </Link>
         </nav>
     );

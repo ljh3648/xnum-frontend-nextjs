@@ -5,15 +5,14 @@ export default function UserCard() {
         <div className={style.container}>
             <div className={style.card}>
                 <div className={`${style.card} ${style.digital} ${style.two}`}>
-                    <div className={style['card-top']}>
-                        <img
-                            src="/car-logo/tesla/tesla-red.png"
-                            width={200}
-                            height={200}
-                        />
-                    </div>
-                    <div className={style['card-mid']}>
-                        <p>잠시 주차중 입니다.</p>
+                    <div className={style['card-on']}>
+                        <img src="/car-logo/tesla/tesla-red.png" />
+                        <p style={{ marginTop: "60px", fontSize: "20px", fontWeight: "700" }}>
+                            잠시 주차중 입니다.
+                        </p>
+                        <p style={{ marginTop: "80px", fontSize: "18px", fontWeight: "600" }}>
+                            0502-1234-1234
+                        </p>
                     </div>
                 </div>
             </div>

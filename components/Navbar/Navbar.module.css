@@ -1,9 +1,29 @@
 .navbar {
-  background-color: black;
-  padding: 20px;
+  background: #ffffff;
+  padding: 10px;
 }
+
+.logo {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  content: url("/logo/logo_black.ico");
+}
+
 .link {
-  color: white;
-  margin-right: 16px;
+  color: black;
+  margin-left: 16px;
   text-decoration: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    background: #0a0a0a;
+  }
+  .logo {
+    content: url("/logo/logo_white.ico");
+  }
+  .link{
+    color: white;
+  }
 }

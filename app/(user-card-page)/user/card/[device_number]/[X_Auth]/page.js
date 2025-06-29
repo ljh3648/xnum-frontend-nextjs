@@ -38,7 +38,7 @@ export default async function UserCardPage({ params: { device_number, X_Auth } }
     <div>
       <Navbar />
       {/* <Card /> */}
-      <div style={{ display: "flex", justifyContent: "center", marginTop: 10 }}>
+      <div style={{ display: "flex", justifyContent: "center" }}>
         <UserCard />
       </div>
       {/* <h1>User Card Information</h1>
